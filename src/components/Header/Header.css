@@ -1,0 +1,16 @@
+
+.Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 430px;
+    width: 100%;
+    background-color: rgb(8, 8, 8);
+
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+
+}
