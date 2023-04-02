@@ -2,9 +2,12 @@
   text-align: center;
 }
 
-.ProductSection{
+.ProductSection {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 30px;
 }
