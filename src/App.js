@@ -6,6 +6,7 @@ import Inicio from './components/pages/Inicio';
 
 import Navbar from './components/NavBar/NavBar';
 
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -14,12 +15,13 @@ const App = () => {
         <Router>
             <div className="App">
 
-                <Navbar />
+                  <Navbar />
 
                 <Routes>
-                    <Route path='/Inicio' element={<Inicio />} />
+                    <Route path='/' element={<Inicio />} />
+                    <Route path='/Inicio' element={<Inicio />} /> 
                     <Route path='/Contacto' element={<Contacto />} />
-                    <Route path='/Nosotros' element={<Nosotros />} />
+                    <Route path='/Nosotros' element={<Nosotros />} />   
                 </Routes>
             </div>
         </Router>

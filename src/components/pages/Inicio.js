@@ -4,11 +4,13 @@ import CardProduct from "../CardProduct/CardProduct";
 import img from '../CardProduct/CardImg/Img'
 import Header from "../Header/Header";
 
-
 const Inicio = () => {
+    
     return (
         <div className="App">
+
             <Header />
+            
             <div className="ProductSection">
                 <CardProduct
                     name="Producto 1"
