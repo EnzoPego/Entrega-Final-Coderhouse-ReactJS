@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { CardActionArea,Typography ,CardMedia,CardContent,Card} from '@mui/material';
 
+import { CardActionArea, Typography ,CardMedia ,CardContent,Card} from '@mui/material';
+import img from '../CardProduct/CardImg/iphone-14.jpg'
 
-const CardProduct = ({name,info,img}) => { 
+const ProductList = ({data}) => {
   return (
     <Card sx={{ maxWidth: 240 }}>
       <CardActionArea>
@@ -10,20 +11,20 @@ const CardProduct = ({name,info,img}) => {
           component="img"
           height="300"
           image={img}
-          alt="imagen producto"
+          alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {name}
+            {data.id}
           </Typography>
+           {data.name}
           <Typography variant="body2" color="text.secondary">
-            {info}
+            Lizards are a widespread group of squamate reptiles, with over 6,000
           </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
-    
   );
-}    
+}
 
-export default CardProduct 
+export default ProductList
