@@ -1,14 +1,14 @@
+import Navbar from './components/NavBar/NavBar';
 import './App.css'
 
-import Contacto from './components/pages/Contacto';
-import Nosotros from './components/pages/Nosotros';
+
+// Pages
 import Inicio from './components/pages/Inicio';
 import ProductDetail from './components/pages/ProductDetali/ProductDetail';
-
-import Navbar from './components/NavBar/NavBar';
-
+import ProductCategory from './components/pages/ProductCategory';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 const App = () => {
 
@@ -16,15 +16,12 @@ const App = () => {
         <Router>
             <div className="App">
 
-                  <Navbar /> 
+                <Navbar />
 
                 <Routes>
                     <Route path='/' element={<Inicio />} />
-                    <Route path='/Inicio' element={<Inicio />} /> 
-                    <Route path='/Nosotros' element={<Nosotros />} />  
-                    <Route path='/Contacto' element={<Contacto />} />
+                    <Route path='/ProductCategory/:category' element={<ProductCategory />} />
                     <Route path='/ProductDetail/:id' element={<ProductDetail />} />
-                     
                 </Routes>
             </div>
         </Router>

@@ -6,9 +6,12 @@ import {AppBar,Toolbar,Typography, Button,IconButton,List,Divider,Box,Drawer,Css
 import { Link } from 'react-router-dom';
 
 
-
 const drawerWidth = 240;
-const navItems = ['Inicio', 'Nosotros', 'Contacto'];
+const navItems = [
+  { name: 'Procesadores', path: '/ProductCategory/cpu' },
+  { name: 'Monitores', path: '/ProductCategory/monitor' },
+  { name: 'Notebooks', path: '/ProductCategory/notebook' }
+];
 
 const DrawerAppBar = (props) => {
 
@@ -21,15 +24,15 @@ const DrawerAppBar = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Link to='/Inicio'>
+      <Link to='/'>
         <img src={logoNavBar} alt="Logo" className="logo-image" />
       </Link>
       <Divider />
       <Box>
         {navItems.map((item) => (
-          <List>
-            <Button key={item} component={Link} to={`${item}`} sx={{ color: '#fff' }}>
-              {item}
+          <List key={item.name}>
+            <Button component={Link} to={item.path} sx={{ color: '#fff',fontSize: '0.85rem',textTransform: 'none'}}>
+              {item.name}
             </Button>
           </List>
         ))}
@@ -56,14 +59,14 @@ const DrawerAppBar = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography sx={{ display: { xs: 'none', sm: 'block' }, marginRight: '110px' }}>
-            <Link to='/Inicio'>
+            <Link to='/'>
               <img src={logoNavBar} alt="Logo" className="logo-image" />
             </Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' }, justifyContent: 'space-between' }}>
             {navItems.map((item) => (
-              <Button key={item} component={Link} to={`${item}`} sx={{ color: '#fff' }}>
-                {item}
+              <Button key={item.name} component={Link} to={item.path} sx={{ color: '#fff',fontSize: '0.85rem', textTransform: 'none' }}>
+                {item.name}
               </Button>
             ))}
             <Cart />

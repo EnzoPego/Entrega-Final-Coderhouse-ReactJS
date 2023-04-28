@@ -1,36 +1,61 @@
+import React, { useEffect, useState } from 'react'
+import Card from '../Card/Card';
+import { Link } from 'react-router-dom'
+import { CircularProgress } from '@mui/material';
 
-import React,{useEffect,useState} from 'react'
-import ProductList from '../ProductList/ProductList';
-import axios from 'axios'
-import {Link} from 'react-router-dom'
+//Firebase
+import { collection, query, getDocs } from "firebase/firestore";
+import { db } from '../../firebase/firebaseConfig';
+
 
 const CardList = () => {
 
-    const [products, setProducts] = useState([])
-
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios("https://jsonplaceholder.typicode.com/users").then((res) => setProducts(res.data))
-    }, [])
+
+        const q = query(collection(db, "products"));
+        const getProducts = async () => {
+            const querySnapshot = await getDocs(q);
+            const docs = [];
+            querySnapshot.forEach((doc) => {
+                docs.push({ ...doc.data(), id: doc.id });
+            });
+
+            setProducts(docs);
+
+            setTimeout(() => {
+                setLoading(false);
+
+            }, 1800);
+        };
+
+        getProducts();
+
+    }, []);
 
 
     return (
- 
-        <div className='ProductSection'>
 
-            {products.map((product) => {
+        <div className="ProductSection">
+
+            {loading ? (<CircularProgress />) : (products.map((product) => {
+
                 return (
                     <div key={product.id}>
-                        <Link to={`/ProductDetail/${product.id}`}>
-                            <ProductList  data={product} />
-                        </Link>    
+
+                        <Link to={`/ProductDetail/${product.id}`} style={{ textDecoration: "none" }}>
+                            <Card data={product} />
+                        </Link>
+
                     </div>
-                )
-            })}
-
+                );
+            }))}
+         
         </div>
- 
-    )
-}
+    );
+      
+};
 
-export default CardList 
+export default CardList;
