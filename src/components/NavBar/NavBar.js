@@ -2,9 +2,9 @@ import * as React from 'react';
 import logoNavBar from './logoNavBar.png'
 import Cart from '@mui/icons-material/LocalGroceryStoreOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
-import {AppBar,Toolbar,Typography, Button,IconButton,List,Divider,Box,Drawer,CssBaseline} from '@mui/material';
-import { Link } from 'react-router-dom';
-
+import { AppBar, Toolbar, Typography, Button, IconButton, List, Divider, Box, Drawer, CssBaseline } from '@mui/material';
+import { Link } from 'react-router-dom'; 
+import { CartContext } from '../context/CartContext';
 
 const drawerWidth = 240;
 const navItems = [
@@ -17,10 +17,26 @@ const DrawerAppBar = (props) => {
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const { cartItems } = React.useContext(CartContext);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
+  const uniqueCartItems = cartItems.reduce((acc, item) => {
+    const existingItem = acc.find(
+      (cartItem) => cartItem.product === item.product
+    );
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      acc.push({ ...item, quantity: 1 });
+    }
+    return acc;
+  }, []);
+  
+  const totalQuantity = uniqueCartItems.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -31,14 +47,16 @@ const DrawerAppBar = (props) => {
       <Box>
         {navItems.map((item) => (
           <List key={item.name}>
-            <Button component={Link} to={item.path} sx={{ color: '#fff',fontSize: '0.85rem',textTransform: 'none'}}>
+            <Button component={Link} to={item.path} sx={{ color: '#fff', fontSize: '0.85rem', textTransform: 'none' }}>
               {item.name}
             </Button>
           </List>
         ))}
       </Box>
-      <Cart />
-      <span>2</span>
+      <Link to='/Cart' style={{ textDecoration: 'none',color: 'white' }}>
+        <Cart />
+        <span>{totalQuantity}</span>
+      </Link>
     </Box>
   );
 
@@ -65,12 +83,14 @@ const DrawerAppBar = (props) => {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' }, justifyContent: 'space-between' }}>
             {navItems.map((item) => (
-              <Button key={item.name} component={Link} to={item.path} sx={{ color: '#fff',fontSize: '0.85rem', textTransform: 'none' }}>
+              <Button key={item.name} component={Link} to={item.path} sx={{ color: '#fff', fontSize: '0.85rem', textTransform: 'none' }}>
                 {item.name}
               </Button>
             ))}
-            <Cart />
-            <span>2</span>
+            <Link to='/Cart' style={{ textDecoration: 'none',color: 'white' }}>
+              <Cart />
+              <span>{totalQuantity}</span>
+            </Link>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
             </Box>
           </Box>

@@ -1,10 +1,9 @@
 import React from 'react'
-
 import Header from "../Header/Header";
 import CardList from '../CardList/CardList';
 
 
-const Inicio = () => {
+const Home = () => {
     
     return (
         <div className="App">
@@ -14,4 +13,4 @@ const Inicio = () => {
     )
 }
 
-export default Inicio
+export default Home

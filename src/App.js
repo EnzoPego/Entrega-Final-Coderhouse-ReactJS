@@ -1,11 +1,13 @@
 import Navbar from './components/NavBar/NavBar';
 import './App.css'
-
+import { CartProvider } from './components/context/CartContext';
 
 // Pages
-import Inicio from './components/pages/Inicio';
+import Home from './components/pages/Home';
 import ProductDetail from './components/pages/ProductDetali/ProductDetail';
 import ProductCategory from './components/pages/ProductCategory';
+import Cart from './components/pages/Cart';
+
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -14,16 +16,19 @@ const App = () => {
 
     return (
         <Router>
-            <div className="App">
+            <CartProvider>
+                <div className="App">
 
-                <Navbar />
+                    <Navbar />
 
-                <Routes>
-                    <Route path='/' element={<Inicio />} />
-                    <Route path='/ProductCategory/:category' element={<ProductCategory />} />
-                    <Route path='/ProductDetail/:id' element={<ProductDetail />} />
-                </Routes>
-            </div>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/ProductCategory/:category' element={<ProductCategory />} />
+                        <Route path='/ProductDetail/:id' element={<ProductDetail />} />
+                        <Route path='/Cart' element={<Cart />} />
+                    </Routes>
+                </div>
+            </CartProvider>
         </Router>
     );
 };
