@@ -13,11 +13,10 @@ const Details = ({ data }) => {
 
   const handleAddToCart = () => {
     addToCart(data);
-   // console.log('Producto agregado al carrito:', data);
     setOpen(true);
   };
 
-  const handleClose = (event, reason) => {
+  const handleClose = (reason) => {
     if (reason === 'clickaway') {
       return;
     }

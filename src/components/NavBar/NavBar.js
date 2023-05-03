@@ -41,7 +41,7 @@ const DrawerAppBar = (props) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Link to='/'>
-        <img src={logoNavBar} alt="Logo" className="logo-image" />
+        <img src={logoNavBar} alt="Logo"/>
       </Link>
       <Divider />
       <Box>
@@ -55,7 +55,7 @@ const DrawerAppBar = (props) => {
       </Box>
       <Link to='/Cart' style={{ textDecoration: 'none',color: 'white' }}>
         <Cart />
-        <span>{totalQuantity}</span>
+        {totalQuantity > 0 && <span style={{backgroundColor: 'red', borderRadius: '50%', padding: '2px 5px', marginLeft: '5px'}}>{totalQuantity}</span>}
       </Link>
     </Box>
   );
@@ -65,8 +65,8 @@ const DrawerAppBar = (props) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav">
-        <Toolbar sx={{ justifyContent: 'space-evenly' }}>
+      <AppBar component="nav" >
+        <Toolbar sx={{ justifyContent: 'space-evenly',backgroundColor: '#222222'}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -78,20 +78,20 @@ const DrawerAppBar = (props) => {
           </IconButton>
           <Typography sx={{ display: { xs: 'none', sm: 'block' }, marginRight: '110px' }}>
             <Link to='/'>
-              <img src={logoNavBar} alt="Logo" className="logo-image" />
+              <img src={logoNavBar} alt="Logo" />
             </Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' }, justifyContent: 'space-between' }}>
             {navItems.map((item) => (
-              <Button key={item.name} component={Link} to={item.path} sx={{ color: '#fff', fontSize: '0.85rem', textTransform: 'none' }}>
+              <Button key={item.name} component={Link} to={item.path} sx={{ color: '#fff', fontSize: '0.82rem', textTransform: 'none' }}>
                 {item.name}
               </Button>
             ))}
             <Link to='/Cart' style={{ textDecoration: 'none',color: 'white' }}>
               <Cart />
-              <span>{totalQuantity}</span>
+              {totalQuantity > 0 && <span style={{backgroundColor: 'red', borderRadius: '50%', padding: '2px 5px', marginLeft: '5px'}}>{totalQuantity}</span>}
             </Link>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems:'center'}}>
             </Box>
           </Box>
         </Toolbar>
@@ -107,7 +107,7 @@ const DrawerAppBar = (props) => {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: '#1976d2' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: '#222222' },
           }}
         >
           {drawer}

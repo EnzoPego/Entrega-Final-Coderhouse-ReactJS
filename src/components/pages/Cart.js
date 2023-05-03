@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { List, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, IconButton, } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from 'react-router-dom';
+
 
 const Cart = () => {
   const { cartItems, removeFromCart } = useContext(CartContext);
-  const uniqueCartItems = cartItems.reduce((acc, item) => {
+  const cartContents = cartItems.reduce((acc, item) => {
     const existingItem = acc.find(
       (cartItem) => cartItem.product === item.product
     );
@@ -17,10 +19,10 @@ const Cart = () => {
     return acc;
   }, []);
 
-  const totalPrice = uniqueCartItems.reduce((acc, item) => {
+  const totalPrice = cartContents.reduce((acc, item) => {
     return acc + item.price * item.quantity;
   }, 0);
-
+ 
   const handleRemoveFromCart = (item) => {
     removeFromCart(item);
   };
@@ -28,29 +30,28 @@ const Cart = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div>
-        {uniqueCartItems.length > 0 ? (
+        {cartContents.length > 0 ? (
           <List>
-            {uniqueCartItems.map((item, index) => (
+            {cartContents.map((item, index) => (
               <ListItem key={index}>
                 <ListItemAvatar>
                   <Avatar
                     variant="square"
                     src={item.img}
                     alt={item.product}
-                    sx={{ width: 145, height: 145 }}
+                    sx={{ width: 80, height: 80 }}
                   />
                 </ListItemAvatar>
                 <ListItemText
-                  primaryTypographyProps={{ variant: 'h5', fontWeight: 'bold' }}
+                  primaryTypographyProps={{ variant: 'h6', fontWeight: 'bold' }}
                   primary={item.product}
                   secondary={
                     <Typography component="span" variant="body2" sx={{ fontWeight: 'bold' }}>
-                      Precio unitario: <span style={{ fontWeight: 'bold'}}>US$ {item.price}</span> | Cantidad: {item.quantity}
+                      Precio unitario: <span style={{ fontWeight: 'bold' }}>US$ {item.price}</span> | Cantidad: {item.quantity}
                     </Typography>
                   }
                   sx={{ marginLeft: '30px' }}
                 />
-
                 <IconButton onClick={() => handleRemoveFromCart(item)} sx={{ color: 'red' }}>
                   <DeleteIcon />
                 </IconButton>
@@ -60,14 +61,21 @@ const Cart = () => {
         ) : (
           <Typography variant="body1">No hay productos en el carrito</Typography>
         )}
-        {uniqueCartItems.length > 0 ? (
-          <Typography variant="h5" sx={{ fontWeight: 'bold', marginTop:'60px' }}>
-            Total a pagar es de: US$ {totalPrice.toFixed(2)}
+        {cartContents.length > 0 ? (
+          <>
+          <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: '60px' }}>
+            Total: US$ {totalPrice.toFixed(2)}
           </Typography>
+          <Link to={{pathname: '/PayOrder',state: { cartContents, totalPrice }}}>
+          <button  style={{ backgroundColor: '#2e7d32', fontSize: '18px', color: 'white', padding: '12px 20px', margin: '40px 0', border: 'none', cursor: 'pointer', width: '70%', }}>
+          Finalizar compra
+        </button>
+        </Link>
+        </>
         ) : null}
       </div>
     </div>
-  );
+    );
 };
 
 export default Cart;

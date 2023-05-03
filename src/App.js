@@ -7,6 +7,7 @@ import Home from './components/pages/Home';
 import ProductDetail from './components/pages/ProductDetali/ProductDetail';
 import ProductCategory from './components/pages/ProductCategory';
 import Cart from './components/pages/Cart';
+import PayOrder from './components/pages/PayOrder';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -18,7 +19,7 @@ const App = () => {
         <Router>
             <CartProvider>
                 <div className="App">
-
+                    
                     <Navbar />
 
                     <Routes>
@@ -26,6 +27,7 @@ const App = () => {
                         <Route path='/ProductCategory/:category' element={<ProductCategory />} />
                         <Route path='/ProductDetail/:id' element={<ProductDetail />} />
                         <Route path='/Cart' element={<Cart />} />
+                        <Route path='/PayOrder' element={<PayOrder />} />
                     </Routes>
                 </div>
             </CartProvider>
