@@ -2,14 +2,13 @@ import * as React from 'react';
 import { Typography, useTheme, useMediaQuery,Snackbar} from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { CartContext } from './context/CartContext';
-import { useContext } from 'react';
-
+import { useContext,useState } from 'react';
 
 const Details = ({ data }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const { addToCart } = useContext(CartContext);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleAddToCart = () => {
     addToCart(data);
