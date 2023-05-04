@@ -1,4 +1,5 @@
 import Navbar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 import './App.css'
 import { CartProvider } from './components/context/CartContext';
 
@@ -29,6 +30,8 @@ const App = () => {
                         <Route path='/Cart' element={<Cart />} />
                         <Route path='/PayOrder' element={<PayOrder />} />
                     </Routes>
+                    <Footer/>
+
                 </div>
             </CartProvider>
         </Router>

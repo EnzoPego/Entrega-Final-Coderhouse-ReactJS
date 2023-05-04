@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
-import { List, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, IconButton, } from '@mui/material';
+import { List, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, IconButton,Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 
@@ -63,19 +63,19 @@ const Cart = () => {
         )}
         {cartContents.length > 0 ? (
           <>
-          <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: '60px' }}>
-            Total: US$ {totalPrice.toFixed(2)}
-          </Typography>
-          <Link to={{pathname: '/PayOrder',state: { cartContents, totalPrice }}}>
-          <button  style={{ backgroundColor: '#2e7d32', fontSize: '18px', color: 'white', padding: '12px 20px', margin: '40px 0', border: 'none', cursor: 'pointer', width: '70%', }}>
-          Finalizar compra
-        </button>
-        </Link>
-        </>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: '60px' }}>
+              Total: US$ {totalPrice.toFixed(2)}
+            </Typography>
+            <Link to={{ pathname: '/PayOrder', state: { cartContents, totalPrice } }}>
+              <Button  style={{ marginTop: '30px' }} type="submit" variant="contained" color="success" size="large">
+                PROCEDER AL PAGO
+              </Button>
+            </Link>
+          </>
         ) : null}
       </div>
     </div>
-    );
+  );
 };
 
 export default Cart;

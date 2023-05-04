@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, useTheme, useMediaQuery,Snackbar} from '@mui/material';
+import { Typography, useTheme, useMediaQuery,Snackbar,Button} from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { CartContext } from './context/CartContext';
 import { useContext,useState } from 'react';
@@ -51,18 +51,18 @@ const Details = ({ data }) => {
             marginTop: '16px',
           }}
         >
-          <button onClick={handleAddToCart} style={{backgroundColor: '#1976d2',color: 'white', padding: '16px 20px',margin: '8px 0', border: 'none', cursor: 'pointer',width: '70%',}} >  
+          <Button onClick={handleAddToCart}  style={{ marginTop: '30px' }} type="submit" variant="contained" color="success" size="large">
             Añadir al Carrito
-          </button>
+          </Button>
         </div>
-        <Snackbar open={open} autoHideDuration={1500} onClose={handleClose} anchorOrigin={{ vertical:'top', horizontal:'right' }}>
+        <Snackbar open={open} autoHideDuration={1500} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
           <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
             Producto agregado al carrito!
           </MuiAlert>
         </Snackbar>
       </div>
     </div>
-    
+
   );
 };
 

@@ -59,6 +59,7 @@ const TicketForm = () => {
                 shrink: true,
               }}
               margin="normal"
+              style={{ width: '300px' }}
             />
             {errors.firstName && touched.firstName ? <div>{errors.firstName}</div> : null}
           </div>
@@ -72,6 +73,7 @@ const TicketForm = () => {
                 shrink: true,
               }}
               margin="normal"
+              style={{ width: '300px' }}
             />
             {errors.lastName && touched.lastName ? <div>{errors.lastName}</div> : null}
           </div>
@@ -85,10 +87,11 @@ const TicketForm = () => {
                 shrink: true,
               }}
               margin="normal"
+              style={{ width: '300px' }}
             />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
           </div>
-          <Button type="submit" variant="contained" color="success" size="large">
+          <Button  style={{ marginTop: '30px' }} type="submit" variant="contained" color="success" size="large">
             Finalizar compra!
           </Button>
         </Form>
