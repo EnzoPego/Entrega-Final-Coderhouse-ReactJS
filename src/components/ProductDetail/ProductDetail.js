@@ -1,11 +1,12 @@
 import React from "react";
-import Details from "../../Details";
+import Details from "../pages/Details";
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { CircularProgress } from "@mui/material";
 //Firebase
 import { collection, query, getDocs, where, documentId } from "firebase/firestore";
-import { db } from "../../../firebase/firebaseConfig";
-import { CircularProgress } from "@mui/material";
+import { db } from "../../firebase/firebaseConfig";
+
 
 const ProductDetail = () => {
 

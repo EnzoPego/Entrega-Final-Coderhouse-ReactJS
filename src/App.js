@@ -5,10 +5,10 @@ import { CartProvider } from './components/context/CartContext';
 
 // Pages
 import Home from './components/pages/Home';
-import ProductDetail from './components/pages/ProductDetali/ProductDetail';
 import ProductCategory from './components/pages/ProductCategory';
 import Cart from './components/pages/Cart';
 import PayOrder from './components/pages/PayOrder';
+import ProductDetail from './components/ProductDetail/ProductDetail';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';

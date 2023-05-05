@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typography, useTheme, useMediaQuery,Snackbar,Button} from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
-import { CartContext } from './context/CartContext';
+import { CartContext } from '../context/CartContext';
 import { useContext,useState } from 'react';
 
 const Details = ({ data }) => {
