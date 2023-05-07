@@ -19,8 +19,8 @@ const TicketForm = () => {
   };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required('*Requerido'),
-    lastName: Yup.string().required('*Requerido'),
+    firstName: Yup.string().required('*Requerido').matches(/^[a-zA-Z]{3,}$/, 'El nombre debe tener al menos tres caracteres y no debe contener números'),
+    lastName: Yup.string().required('*Requerido').matches(/^[a-zA-Z]{3,}$/, 'El apellido debe tener al menos tres caracteres y no debe contener números'),
     email: Yup.string().email('Correo electrónico inválido').required('*Requerido'),
   });
 
