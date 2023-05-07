@@ -1,6 +1,6 @@
 # Shoptech
 
-### Shoptech es un proyecto realizado con React JS y Firebase para el curso de  Coderhouse.
+> Shoptech es un proyecto realizado con React JS y Firebase para el curso de  Coderhouse.
 
 # Dependencias utilizadas.
 
