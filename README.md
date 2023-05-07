@@ -1,17 +1,17 @@
 # Shoptech
 
-### Shoptech es un proyecto realizado para el curso de React JS en Coderhouse.
+### Shoptech es un proyecto realizado con React JS y Firebase para el curso de  Coderhouse.
 
-# Dependencias utilizadas
+# Dependencias utilizadas.
 
-- [x] Firebase
-- [x] Material UI
-- [x] React Router Dom
-- [x] Sweetalert2
-- [x] Yup
-- [x] Formik
+- [x] Firebase.
+- [x] Material UI.
+- [x] React Router Dom.
+- [x] Sweetalert2.
+- [x] Yup.
+- [x] Formik.
 
-#Instalación
+# Instalación.
 
 - Abre tu terminal y navega hasta la carpeta donde deseas clonar el repositorio.
 - Escribe el siguiente comando:  git clone `https://github.com/EnzoPego/EnzoPego-E-commerce-React-01.git`.
